@@ -42,7 +42,7 @@ export const productReducer: Reducer<ProductState> = (
     case ProductType.remove_product:
       state.product = state.product.map((x) => {
         if (x.id === action.payload.data.id) {
-          if (x.quantity !== 1) {
+          if (x.quantity !== 0) {
             x.quantity--;
             const total =
               state.total.total - parseInt(x.price.toString().split('.')[0]);
