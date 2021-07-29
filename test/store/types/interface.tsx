@@ -19,7 +19,7 @@ export interface Product {
 export interface Total {
   total: number;
   shop: string;
-  sub_total: number;
+  sub_total: any;
 }
 
 export interface ProductState {

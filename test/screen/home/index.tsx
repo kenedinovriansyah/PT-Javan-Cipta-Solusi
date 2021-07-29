@@ -116,7 +116,7 @@ const HomeScreen = () => {
           <div className="left">
             <div className="group">
               <span>Tampory Amount</span>
-              <span className="total">${selector.total.total}</span>
+              <span className="total">${selector.total.sub_total}</span>
             </div>
             <div className="group">
               <span>Shopping</span>

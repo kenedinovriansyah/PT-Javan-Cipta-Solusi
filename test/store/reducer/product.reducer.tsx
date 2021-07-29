@@ -27,10 +27,9 @@ export const productReducer: Reducer<ProductState> = (
       state.product = state.product.map((x) => {
         if (x.id === action.payload.data.id) {
           x.quantity++;
-          const total =
-            state.total.total + parseInt(x.price.toString().split('.')[0]);
+          const total = state.total.total + x.price;
           state.total.total = total;
-          state.total.sub_total = total;
+          state.total.sub_total = total.toFixed(2);
 
           return x;
         } else return x;
@@ -44,10 +43,9 @@ export const productReducer: Reducer<ProductState> = (
         if (x.id === action.payload.data.id) {
           if (x.quantity !== 0) {
             x.quantity--;
-            const total =
-              state.total.total - parseInt(x.price.toString().split('.')[0]);
+            const total = state.total.total - x.price;
             state.total.total = total;
-            state.total.sub_total = total;
+            state.total.sub_total = total.toFixed(2);
           }
           return x;
         } else return x;
@@ -75,10 +73,9 @@ export const productReducer: Reducer<ProductState> = (
       const match = state.product.filter(function (x) {
         return x.id === action.payload.id;
       });
-      const total =
-        match[0].quantity * parseInt(match[0].price.toString().split('.')[0]);
+      const total = match[0].quantity * match[0].price;
       state.total.total = state.total.total - total;
-      state.total.sub_total = state.total.total;
+      state.total.sub_total = state.total.total.toFixed(2);
       state.product = product;
       return {
         ...state,
